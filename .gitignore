@@ -87,3 +87,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+*.iml
+.idea/inspectionProfiles/profiles_settings.xml
+*.xml
+.idea/vcs.xml
+*.xml

@@ -1,0 +1,26 @@
+import csv
+
+# CSV route file
+file = open("C:\\Users\\DavidFrias\\Desktop\\location.csv", "r")
+
+# read a CSV and establish the header
+csvReader = csv.reader(file)
+header = csvReader.next()
+lat = header.index("latitude")
+lon = header.index("longitude")
+alt = header.index("altitude")
+bearing = header.index("bearing")
+speed = header.index("speed")
+accuracy = header.index("accuracy")
+sensorTime = header.index("sensorTimestamp")
+systemTime = header.index("systemTimestamp")
+
+# list
+coordList = []
+
+# extract value
+for row in csvReader:
+    coordList.append([row[lat], row[lon], row[alt]])
+
+# print list
+print coordList
