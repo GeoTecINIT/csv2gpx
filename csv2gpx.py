@@ -97,6 +97,6 @@ def csv2gpx(name_trk, file_name_gpx, file_name_csv, route_file):
 
 if __name__ == "__main__":
     if len(sys.argv) != arg + 1:
-        print("Error - You must to put correctly the arguments")
+        print("Error - You must put correctly the arguments")
         sys.exit(1)
     csv2gpx(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
