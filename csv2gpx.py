@@ -31,7 +31,7 @@ def csv2gpx(name_trk, file_name_gpx, file_name_csv, route_file):
     coord_list = []
     for row in csv_reader:
         coord_list.append([row[lat], row[lon], row[alt]])
-        time = datetime.fromtimestamp(long(row[systemTime])//1000).replace(microsecond=long(row[systemTime])%1000*1000)
+        time = datetime.utcfromtimestamp(long(row[systemTime])//1000).replace(microsecond=long(row[systemTime])%1000*1000)
         # create a segment track (point)
         trk += '<trkpt lat ="' + row[lat] + '" lon ="' + row[lon] + '">'
         trk += '\n'
