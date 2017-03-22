@@ -1,6 +1,8 @@
 # csv2gpx
 CSV to GPX
 
+from csv2gpx import *
+
 You add this 4 things, with example
 
 #Name of track
