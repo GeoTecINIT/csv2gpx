@@ -1,5 +1,6 @@
 import csv
 import sys
+from datetime import datetime
 
 arg = 4
 
@@ -24,19 +25,20 @@ def csv2gpx(name_trk, file_name_gpx, file_name_csv, route_file):
     bearing = header.index("bearing")
     speed = header.index("speed")
     accuracy = header.index("accuracy")
-    sensorTime = str(header.index("sensorTimestamp"))
+    sensorTime = header.index("sensorTimestamp")
     systemTime = header.index("systemTimestamp")
     trk = ""
     coord_list = []
     for row in csv_reader:
         coord_list.append([row[lat], row[lon], row[alt]])
+        time = datetime.fromtimestamp(long(row[systemTime])//1000).replace(microsecond=long(row[systemTime])%1000*1000)
         # create a segment track (point)
         trk += '<trkpt lat ="' + row[lat] + '" lon ="' + row[lon] + '">'
         trk += '\n'
         trk += '<ele>' + row[alt] + '</ele>'
         trk += '\n'
-        # trk+='<time>' + sensorTime + '</time>'
-        # trk+='\n'
+        trk+='<time>' + time.isoformat()[:-3]+'Z' + '</time>'
+        trk+='\n'
         trk += '</trkpt>'
         trk += '\n'
     min_coord = min(coord_list)
